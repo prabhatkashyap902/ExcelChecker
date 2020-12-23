@@ -74,8 +74,8 @@ def data():
             writedf = pd.DataFrame(columns=['id', 'question', 'dbanswer',
                                             'apianswer', 'apiintent', 'apientity', 'apientityvalue', 'match'])
             cnt = 0
-            req = {"session": {}, "query": "hi!",
-                   "type": "sent", "time": "xyz", "count": 1}
+            req = {"session": -1, "query": "hi!",
+                   "type": "sent", "time": "xyz", "count": 1, "conversationId": "yolo"}
 
             for i, row in exceldf.iterrows():
                 if str(row['answer']).lower() == 'nan':
