@@ -10,6 +10,13 @@ UPLOAD_FOLDER = '/c/Users/PRABHAT/PycharmProjects/flaskApi/uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+#---------Date&Time-Block-----------
+from datetime import datetime
+now = datetime.now()
+time_date=now.strftime("%d%m")
+print(time_date)
+##-----------------------------------
+
 
 ALLOWED_EXTENSIONS = {'xlsx'}
 def allowed_file(filename):
@@ -40,9 +47,12 @@ def data():
             # Current directory for Flask app + file name
             # Use this file_path variable in your code to refer to your file
             file_path = os.path.join(APP_ROOT, file.filename)
+
             file.save(os.path.join(APP_ROOT, file.filename))
             print("Saved")
             print(file_path)
+
+            print(os.path.splitext(file.filename)[0])
             # return redirect(request.url)
             import numpy as np
             import pandas as pd
@@ -138,7 +148,7 @@ def data():
                 if cnt % 10 == 0:
                     print(cnt)
 
-            writer = pd.ExcelWriter('questionanswersmod2.xlsx')
+            writer = pd.ExcelWriter(os.path.splitext(file.filename)[0]+"_output_"+time_date+'.xlsx')
             writedf.to_excel(writer, 'Sheet1', index=False)
             writer.save()
 
