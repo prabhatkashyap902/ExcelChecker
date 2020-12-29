@@ -88,8 +88,8 @@ def data():
                    "type": "sent", "time": "xyz", "count": 1, "conversationId": "yolo"}
 
             for i, row in exceldf.iterrows():
-                if str(row['answer']).lower() == 'nan':
-                    continue
+                # if str(row['answer']).lower() == 'nan':
+                #     continue
                 req['query'] = row['question']
                 res = getanswer(req)
                 if not res:
@@ -131,7 +131,12 @@ def data():
                 if entityvaluelist:
                     writedf.at[cnt, 'apientityvalue'] = ','.join(entityvaluelist)
 
-                dbmessages = row['answer'].split('|')
+                if str(row['answer']).lower() == 'nan':
+                    dbmessages = ['k']
+                else:  dbmessages = row['answer'].split('|')
+                print("137")
+                print(dbmessages)
+
                 while '' in dbmessages:
                     dbmessages.remove('')
 
