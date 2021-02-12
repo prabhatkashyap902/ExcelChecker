@@ -206,9 +206,9 @@ def data():
             # creates SMTP session
             s = smtplib.SMTP('smtp.gmail.com', 587)
             #
-            # # start TLS for security
-            # s.starttls()
-            #
+            # start TLS for security
+            s.starttls()
+
 
 
             # Converts the Multipart msg into a string
