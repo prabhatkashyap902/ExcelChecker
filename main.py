@@ -134,8 +134,8 @@ def data():
                 if str(row['answer']).lower() == 'nan':
                     dbmessages = ['k']
                 else:  dbmessages = row['answer'].split('|')
-                print("137")
-                print(dbmessages)
+                # print("137")
+                # print(dbmessages)
 
                 while '' in dbmessages:
                     dbmessages.remove('')
@@ -186,7 +186,7 @@ def data():
             msg.attach(MIMEText(body, 'plain'))
 
             # open the file to be sent
-            filen =  'questionanswersmod2.xlsx'
+            filen =  os.path.splitext(file.filename)[0]+"_output_"+time_date+'.xlsx'
             attachment = open(filen,  "rb")
 
             # instance of MIMEBase and named as p
