@@ -205,15 +205,17 @@ def data():
 
             # creates SMTP session
             s = smtplib.SMTP('smtp.gmail.com', 587)
+            #
+            # # start TLS for security
+            # s.starttls()
+            #
 
-            # start TLS for security
-            s.starttls()
-
-            # Authentication
-            s.login(fromaddr, "checkerexcel41")
 
             # Converts the Multipart msg into a string
             text = msg.as_string()
+
+            # Authentication
+            s.login(fromaddr, "checkerexcel41")
 
             # sending the mail
             s.sendmail(fromaddr, toaddr, text)
