@@ -150,8 +150,7 @@ def data():
                     writedf.at[cnt, 'match'] = 'nomatch'
 
                 cnt += 1
-                if cnt % 10 == 0:
-                    print(cnt)
+                print(cnt)
 
             writer = pd.ExcelWriter(os.path.splitext(file.filename)[0]+"_output_"+time_date+'.xlsx')
             writedf.to_excel(writer, 'Sheet1', index=False)
